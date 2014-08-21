@@ -16,6 +16,7 @@ set fish_plugins git rails vi-mode
 . $fish_path/oh-my-fish.fish
 
 set PATH $PATH /opt/pkgconfig/bin /Users/samrossoff/google-cloud-sdk/bin /Users/samrossoff/play-1.2.5.3
+set GOPATH /Users/samrossoff/gocode/
 
 
 # Env variable

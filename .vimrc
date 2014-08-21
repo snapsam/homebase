@@ -1,56 +1,67 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" you first have to
+"  % git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-" alternatively, pass a path where Vundle should install bundles
-"let path = '~/some/path/here'
-"call vundle#rc(path)
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " The following are examples of different formats supported.
-" Keep bundle commands between here and filetype plugin indent on.
-" scripts on GitHub repos
-"Bundle 'tpope/vim-fugitive'
-"Bundle 'Lokaltog/vim-easymotion'
-"Bundle 'tpope/vim-rails.git'
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+"Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+"Plugin 'L9'
+" Git plugin not hosted on GitHub
+"Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+"Plugin 'file:///home/gmarik/path/to/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
-"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-" scripts from http://vim-scripts.org/vim/scripts.html
-"Bundle 'L9'
-"Bundle 'FuzzyFinder'
-" scripts not on GitHub
-"Bundle 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Bundle 'file:///home/gmarik/path/to/plugin'
-
-
+"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Avoid a name conflict with L9
+"Plugin 'user/L9', {'name': 'newL9'}
 
 "My bundles
-Bundle 'jlanzarotta/bufexplorer'
-Bundle 'YankRing.vim'
-Bundle 'ack.vim'
-Bundle 'ctrlp.vim'
-Bundle 'syntastic'
-Bundle 'tpope/vim-fugitive'
-Bundle 'vimtodo'
-Bundle 'openurl.vim'
-Bundle 'vim-javascript'
-Bundle 'vim-misc'
-Bundle 'KurtPreston/vim-autoformat-rails'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'xolox/vim-session'
-Bundle 'itchyny/calendar.vim'
-Bundle 'triglav/vim-visual-increment'
-Bundle 'juvenn/mustache.vim'
+Plugin 'jlanzarotta/bufexplorer'
+Plugin 'YankRing.vim'
+Plugin 'ack.vim'
+Plugin 'ctrlp.vim'
+Plugin 'syntastic'
+Plugin 'tpope/vim-fugitive'
+Plugin 'vimtodo'
+Plugin 'openurl.vim'
+Plugin 'vim-javascript'
+Plugin 'vim-misc'
+Plugin 'KurtPreston/vim-autoformat-rails'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'xolox/vim-session'
+Plugin 'itchyny/calendar.vim'
+Plugin 'triglav/vim-visual-increment'
+Plugin 'juvenn/mustache.vim'
+Plugin 'bkad/CamelCaseMotion'
 
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
 
-filetype plugin indent on
-
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 
 " First setup variable for other variables
 "let g:useNinjaTagList=1
@@ -176,6 +187,14 @@ au FileType c,cpp set cinkeys+=0#
 
   let g:todo_done_file = ".todo_done_log.todo" " Set file to put done tasks in
   let g:todo_browser = "open" " what browser to use to open incidents
+
+" CamelCaseMotion mappings
+  map <silent> w <Plug>CamelCaseMotion_w
+  map <silent> b <Plug>CamelCaseMotion_b
+  map <silent> e <Plug>CamelCaseMotion_e
+  sunmap w
+  sunmap b
+  sunmap e
 
 " calendar settings
 " PrePad taken from stackoverflow:
