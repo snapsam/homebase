@@ -15,8 +15,8 @@ set fish_plugins git rails vi-mode
 # Load oh-my-fish configuration.
 . $fish_path/oh-my-fish.fish
 
-set PATH $PATH /opt/pkgconfig/bin /Users/samrossoff/google-cloud-sdk/bin /Users/samrossoff/play-1.2.5.3
-set GOPATH ~/gocode/
+set PATH $PATH /opt/pkgconfig/bin /Users/samrossoff/google-cloud-sdk/bin /Users/samrossoff/play-1.2.5.3 /Users/samrossoff/bin
+set -x GOPATH ~/gocode/
 set APPENGINE_HOME /Users/samrossoff/appengine-java-sdk-1.9.9
 
 
@@ -49,6 +49,11 @@ function fish_prompt
 
   # Add a newline before prompts
   #echo -e ""
+
+  # Setup title for screen
+  echo -ne '\033k'
+  echo -ne $argv
+  echo -ne '\033\\'
 
   # Display [venvname] if in a virtualenv
   if set -q VIRTUAL_ENV
