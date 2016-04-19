@@ -50,7 +50,7 @@ Plugin 'tpope/vim-git'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
- Plugin 'honza/vim-snippets'
+Plugin 'honza/vim-snippets'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
