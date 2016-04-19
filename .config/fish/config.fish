@@ -1,19 +1,29 @@
-# Path to your oh-my-fish.
-set fish_path $HOME/.oh-my-fish
+## Path to your oh-my-fish.
+#set fish_path $HOME/.oh-my-fish
+#
+## Theme
+##set fish_theme idan
+#
+## Which plugins would you like to load? (plugins can be found in ~/.oh-my-fish/plugins/*)
+## Custom plugins may be added to ~/.oh-my-fish/custom/plugins/
+## Example format: set fish_plugins autojump bundler
+#set fish_plugins git rails vi-mode battery
+#
+## Path to your custom folder (default path is $FISH/custom)
+##set fish_custom $HOME/dotfiles/oh-my-fish
+#
+## Load oh-my-fish configuration.
+#. $fish_path/oh-my-fish.fish
 
-# Theme
-#set fish_theme idan
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-fish/plugins/*)
-# Custom plugins may be added to ~/.oh-my-fish/custom/plugins/
-# Example format: set fish_plugins autojump bundler
-set fish_plugins git rails vi-mode battery
+# Path to Oh My Fish install.
+set -gx OMF_PATH "/Users/samrossoff/.local/share/omf"
 
-# Path to your custom folder (default path is $FISH/custom)
-#set fish_custom $HOME/dotfiles/oh-my-fish
+# Customize Oh My Fish configuration path.
+#set -gx OMF_CONFIG "/Users/samrossoff/.config/omf"
 
 # Load oh-my-fish configuration.
-. $fish_path/oh-my-fish.fish
+source $OMF_PATH/init.fish
 
 set PATH $PATH /opt/pkgconfig/bin /Users/samrossoff/google-cloud-sdk/bin /Users/samrossoff/play-1.2.5.3 /Users/samrossoff/bin
 set -x GOPATH ~/gocode/
@@ -90,6 +100,8 @@ function fish_right_prompt
   set -l red (set_color -o red)
   set -l normal (set_color normal)
 
+  set -U battery eval battery (math '60 * 1  * 1 ') 'pmset -g batt | egrep "([0-9]+\%).*" -o --colour=auto | cut -f1 -d";"'
+  echo (battery)
   echo -n -s $cyan (prompt_pwd)
 
   if test $last_status -ne 0
