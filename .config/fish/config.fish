@@ -25,6 +25,7 @@ set -gx OMF_PATH "/Users/samrossoff/.local/share/omf"
 # Load oh-my-fish configuration.
 source $OMF_PATH/init.fish
 
+
 set PATH $PATH /opt/pkgconfig/bin /Users/samrossoff/google-cloud-sdk/bin /Users/samrossoff/play-1.2.5.3 /Users/samrossoff/bin
 set -x GOPATH ~/gocode/
 set APPENGINE_HOME /Users/samrossoff/appengine-java-sdk-1.9.9
@@ -32,7 +33,6 @@ set APPENGINE_HOME /Users/samrossoff/appengine-java-sdk-1.9.9
 
 # Env variable
 set JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home
-
 
 #Prompt stuff
 #I'll refactor this later into it's own file
@@ -98,10 +98,29 @@ function fish_right_prompt
   set -l last_status $status
   set -l cyan (set_color -o cyan)
   set -l red (set_color -o red)
+  set -l yellow (set_color -o yellow)
+  set -l green (set_color -o green)
   set -l normal (set_color normal)
 
-  set -U battery eval battery (math '60 * 1  * 1 ') 'pmset -g batt | egrep "([0-9]+\%).*" -o --colour=auto | cut -f1 -d";"'
-  echo (battery)
+
+  if set -q BATTERY_IS_CHARGING
+     set_color yellow
+     printf '⌁'
+  else if set -q BATTERY_IS_PLUGGED
+     set_color green
+     printf "@"
+  end
+
+  if math "$BATTERY_PCT > 50" > /dev/null
+    set_color cyan
+  else if math "$BATTERY_PCT > 20" > /dev/null
+    set_color yellow
+  else
+    set_color red
+  end
+  printf '%.0f%% ' $BATTERY_PCT
+  set_color normal
+
   echo -n -s $cyan (prompt_pwd)
 
   if test $last_status -ne 0
