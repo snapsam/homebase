@@ -25,6 +25,7 @@ set -gx OMF_PATH "/Users/samrossoff/.local/share/omf"
 # Load oh-my-fish configuration.
 source $OMF_PATH/init.fish
 
+fish_vi_mode
 
 set PATH $PATH /opt/pkgconfig/bin /Users/samrossoff/google-cloud-sdk/bin /Users/samrossoff/play-1.2.5.3 /Users/samrossoff/bin
 set -x GOPATH ~/gocode/
