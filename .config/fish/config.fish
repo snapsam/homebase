@@ -35,6 +35,9 @@ set APPENGINE_HOME /Users/samrossoff/appengine-java-sdk-1.9.9
 # Env variable
 set JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home
 
+# Teh fuck
+eval (thefuck --alias | tr '\n' ';')
+
 #Prompt stuff
 #I'll refactor this later into it's own file
 
