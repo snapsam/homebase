@@ -25,11 +25,11 @@ set -gx OMF_PATH "/Users/samrossoff/.local/share/omf"
 # Load oh-my-fish configuration.
 source $OMF_PATH/init.fish
 
-fish_vi_mode
+set -g fish_key_bindings fish_vi_key_bindings
 
 set PATH $PATH /opt/pkgconfig/bin /Users/samrossoff/google-cloud-sdk/bin /Users/samrossoff/play-1.2.5.3 /Users/samrossoff/bin
 set -x GOPATH ~/gocode/
-set APPENGINE_HOME /Users/samrossoff/appengine-java-sdk-1.9.9
+set APPENGINE_HOME /Users/samrossoff/appengine-java-sdk-1.9.34
 
 
 # Env variable
@@ -106,6 +106,7 @@ function fish_right_prompt
   set -l green (set_color -o green)
   set -l normal (set_color normal)
 
+  battery > /dev/null
 
   if set -q BATTERY_IS_CHARGING
      set_color yellow
@@ -136,4 +137,10 @@ end
 
 function git-clean
   git branch | sed 's/^..//' | xargs -n 1 git branch -d
+end
+
+function gmake
+#TODO: something clever here with checking for a Makefile first
+#TODO: probably find the ./gradlew if it's up directory from us
+  gradlew jar; and gradlew pmdMain; and gradlew findBugsMain
 end
