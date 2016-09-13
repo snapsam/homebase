@@ -194,12 +194,12 @@ au FileType c,cpp set cinkeys+=0#
   let g:todo_browser = "open" " what browser to use to open incidents
 
 " CamelCaseMotion mappings
-  map <silent> w <Plug>CamelCaseMotion_w
-  map <silent> b <Plug>CamelCaseMotion_b
-  map <silent> e <Plug>CamelCaseMotion_e
-  sunmap w
-  sunmap b
-  sunmap e
+"  map <silent> w <Plug>CamelCaseMotion_w
+"  map <silent> b <Plug>CamelCaseMotion_b
+"  map <silent> e <Plug>CamelCaseMotion_e
+"  sunmap w
+"  sunmap b
+"  sunmap e
 
 " calendar settings
 " PrePad taken from stackoverflow:
