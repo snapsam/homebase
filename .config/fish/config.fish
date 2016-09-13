@@ -27,10 +27,14 @@ source $OMF_PATH/init.fish
 
 set -g fish_key_bindings fish_vi_key_bindings
 
-set PATH $PATH /opt/pkgconfig/bin /Users/samrossoff/google-cloud-sdk/bin /Users/samrossoff/play-1.2.5.3 /Users/samrossoff/bin
+set PATH /Users/samrossoff/bin $PATH /opt/pkgconfig/bin /Users/samrossoff/google-cloud-sdk/bin /Users/samrossoff/play-1.2.5.3
 set -x GOPATH ~/gocode/
 set APPENGINE_HOME /Users/samrossoff/appengine-java-sdk-1.9.34
 
+# Android Setup
+set ANDROID_HOME /usr/local/opt/android-sdk
+set PATH $ANDROID_HOME/tools $ANDROID_HOME/platform-tools $PATH
+set ANDROID_HVPROTO ddm
 
 # Env variable
 set JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home
@@ -137,6 +141,10 @@ end
 
 function git-clean
   git branch | sed 's/^..//' | xargs -n 1 git branch -d
+end
+
+function gclean
+  gradle clean; and gradle cleanIdea; and gradle idea
 end
 
 function gmake
