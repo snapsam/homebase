@@ -1,5 +1,5 @@
 [user]
-	name = Sam Rossoff (of the Ebon Blade)
+	name = Sam
 	email = sam@snapchat.com
 [push]
 	default = current
@@ -39,3 +39,5 @@
 	alog = log --date-order --all --graph --format=\"%C(green)%H%Creset %C(yellow)%an%Creset %C(blue bold)%ad%Creset %C(red bold)%d%Creset%s\"
 [rerere]
 	enabled = 1
+[url "git@github.com:"]
+	insteadOf = https://github.com/

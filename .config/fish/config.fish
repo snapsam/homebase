@@ -15,6 +15,8 @@
 ## Load oh-my-fish configuration.
 #. $fish_path/oh-my-fish.fish
 
+# Make us the default shell
+set SHELL /usr/local/bin/fish
 
 # Path to Oh My Fish install.
 set -gx OMF_PATH "/Users/samrossoff/.local/share/omf"
@@ -33,11 +35,12 @@ set APPENGINE_HOME /Users/samrossoff/appengine-java-sdk-1.9.34
 
 # Android Setup
 set ANDROID_HOME /usr/local/opt/android-sdk
+set ANDROID_SDK /usr/local/opt/android-sdk
 set PATH $ANDROID_HOME/tools $ANDROID_HOME/platform-tools $PATH
 set ANDROID_HVPROTO ddm
 
 # Env variable
-set JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home
+set JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home
 
 # Teh fuck
 eval (thefuck --alias | tr '\n' ';')
@@ -69,9 +72,9 @@ function fish_prompt
   #echo -e ""
 
   # Setup title for screen
-  echo -ne '\033k'
-  echo -ne $argv
-  echo -ne '\033\\'
+  #echo -ne '\033k'
+  #echo -ne $argv
+  #echo -ne '\033\\'
 
   # Display [venvname] if in a virtualenv
   if set -q VIRTUAL_ENV
