@@ -30,7 +30,6 @@ source $OMF_PATH/init.fish
 set -g fish_key_bindings fish_vi_key_bindings
 
 set PATH /Users/samrossoff/bin $PATH /opt/pkgconfig/bin /Users/samrossoff/google-cloud-sdk/bin /Users/samrossoff/play-1.2.5.3
-set -x GOPATH ~/gocode/
 set APPENGINE_HOME /Users/samrossoff/appengine-java-sdk-1.9.34
 
 # Android Setup
