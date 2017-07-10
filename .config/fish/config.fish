@@ -37,7 +37,7 @@ set APPENGINE_HOME /Users/samrossoff/appengine-java-sdk-1.9.34
 
 # Android Setup
 set ANDROID_HOME /usr/local/opt/android-sdk
-set ANDROID_SDK /usr/local/opt/android-sdk
+set -g -x ANDROID_SDK /usr/local/opt/android-sdk
 set PATH $ANDROID_HOME/tools $ANDROID_HOME/platform-tools $PATH
 set ANDROID_HVPROTO ddm
 
