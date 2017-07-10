@@ -42,7 +42,8 @@ set PATH $ANDROID_HOME/tools $ANDROID_HOME/platform-tools $PATH
 set ANDROID_HVPROTO ddm
 
 # Env variable
-set JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home
+set JAVA_7_HOME /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home/
+set JAVA_8_HOME /Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/
 
 # Teh fuck
 eval (thefuck --alias | tr '\n' ';')
