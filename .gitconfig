@@ -27,6 +27,7 @@
 	br = branch
 	co = checkout
 	df = diff
+  dw = diff -w -b --ignore-space-at-eol --ignore-blank-lines 
 	ls = ls-files
 	p = pick --local-only
 	lg = log -p
