@@ -1,2 +1,3 @@
 # Only track files that start in .
 *
+.snapaccess.yml

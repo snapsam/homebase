@@ -5,6 +5,8 @@
 	default = current
 [merge]
 	conflictstyle = diff3
+[fetch]
+	prune = true
 [gc]
 	reflogExpire = never
 	reflogExpireUnreachable = never
@@ -40,5 +42,9 @@
 	alog = log --date-order --all --graph --format=\"%C(green)%H%Creset %C(yellow)%an%Creset %C(blue bold)%ad%Creset %C(red bold)%d%Creset%s\"
 [rerere]
 	enabled = 1
-[url "git@github.com:"]
-	insteadOf = https://github.com/
+# [url "git@github.com:"]
+# 	insteadOf = https://github.com/
+[url "git@github.sc-corp.net:"]
+	insteadOf = https://github.sc-corp.net/
+#[url "https://github.sc-corp.net/"]
+#	insteadOf = git@github.sc-corp.net:

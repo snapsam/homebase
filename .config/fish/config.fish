@@ -41,12 +41,27 @@ set -g -x ANDROID_SDK /usr/local/opt/android-sdk
 set PATH $ANDROID_HOME/tools $ANDROID_HOME/platform-tools $PATH
 set ANDROID_HVPROTO ddm
 
+# Rust
+set PATH $HOME/.cargo/bin $PATH
+
+# Go
+set GOPATH $HOME/Snapchat/Dev
+set PATH /usr/local/opt/go/libexec/bin $PATH $GOPATH/bin
+
 # Env variable
-set JAVA_7_HOME /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home/
-set JAVA_8_HOME /Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/
+set -g -x JAVA_7_HOME /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home/
+set -g -x JAVA_8_HOME /Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/
 
 # Teh fuck
 eval (thefuck --alias | tr '\n' ';')
+
+# FZF https://github.com/junegunn/fzf
+fzf_key_bindings
+
+# Make LS colorize when it prints to LESS
+set -g -x CLICOLOR_FORCE 1
+#alias ls="ls -GFp"
+alias less="less -iR"
 
 #Prompt stuff
 #I'll refactor this later into it's own file
@@ -150,11 +165,60 @@ function git-clean
 end
 
 function gclean
-  gradle clean; and gradle cleanIdea; and gradle idea
+  gradle clean cleanIdea idea
 end
 
 function gmake
 #TODO: something clever here with checking for a Makefile first
-#TODO: probably find the ./gradlew if it's up directory from us
-  gradlew jar; and gradlew pmdMain; and gradlew findBugsMain
+  gradle jar pmdMain findBugsMain
+end
+
+function android-screen-record
+  adb shell screenrecord --bugreport /sdcard/screen_record.mp4
+end
+
+function android-pull-screen-record
+ adb pull /sdcard/screen_record.mp4 ~/Desktop/screen_record.mp4
+end
+
+
+# Taken from 
+# https://gist.githubusercontent.com/gerbsen/5fd8aa0fde87ac7a2cae/raw/8c58a3711bc727f9a2d6de87e24cd5768e6a21d1/ssh_agent_start.fish
+#
+setenv SSH_ENV $HOME/.ssh/environment
+
+function start_agent
+    echo "Initializing new SSH agent ..."
+    ssh-agent -c | sed 's/^echo/#echo/' > $SSH_ENV
+    echo "succeeded"
+    chmod 600 $SSH_ENV
+    . $SSH_ENV > /dev/null
+    ssh-add
+end
+
+function test_identities
+    ssh-add -l | grep "The agent has no identities" > /dev/null
+    if [ $status -eq 0 ]
+        ssh-add
+        if [ $status -eq 2 ]
+            start_agent
+        end
+    end
+end
+
+if [ -n "$SSH_AGENT_PID" ]
+    ps -ef | grep $SSH_AGENT_PID | grep ssh-agent > /dev/null
+    if [ $status -eq 0 ]
+        test_identities
+    end
+else
+    if [ -f $SSH_ENV ]
+        . $SSH_ENV > /dev/null
+    end
+    ps -ef | grep $SSH_AGENT_PID | grep -v grep | grep ssh-agent > /dev/null
+    if [ $status -eq 0 ]
+        test_identities
+    else
+        start_agent
+    end
 end
