@@ -14,3 +14,8 @@ Requires brew or some other means of installing fish:
 % mv ~/homebase/* ~
 % mv ~/homebase/.git ~
 ```
+
+Example
+========
+
+![Example of it in action](https://github.sc-corp.net/sam/homebase/blob/master/example.png?raw=true)
