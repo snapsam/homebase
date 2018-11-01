@@ -36,8 +36,9 @@ set APPENGINE_HOME /Users/samrossoff/appengine-java-sdk-1.9.34
 #set PATH /usr/local/opt/buck/bin $PATH
 
 # Android Setup
-set ANDROID_HOME /usr/local/opt/android-sdk
+set -g -x ANDROID_HOME /usr/local/opt/android-sdk
 set -g -x ANDROID_SDK /usr/local/opt/android-sdk
+set -g -x ANDROID_NDK_HOME $ANDROID_SDK/ndk-bundle/
 set PATH $ANDROID_HOME/tools $ANDROID_HOME/platform-tools $PATH
 set ANDROID_HVPROTO ddm
 
@@ -45,7 +46,7 @@ set ANDROID_HVPROTO ddm
 set PATH $HOME/.cargo/bin $PATH
 
 # Go
-set GOPATH $HOME/Snapchat/Dev
+set -g -x GOPATH $HOME/Snapchat/Dev
 set PATH /usr/local/opt/go/libexec/bin $PATH $GOPATH/bin
 
 # Env variable
