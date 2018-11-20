@@ -15,6 +15,8 @@
 	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
 	pager = less -XRMSIF
 	editor = vim
+# More info: http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/
+	trustctime = false
 [color]
 	ui = true
 	interactive = always
@@ -24,14 +26,12 @@
 [credential]
 	helper = osxkeychain
 [alias]
+	alog = log --date-order --all --graph --format=\"%C(green)%H%Creset %C(yellow)%an%Creset %C(blue bold)%ad%Creset %C(red bold)%d%Creset%s\"
 	st = status
 	ci = commit
 	br = branch
 	co = checkout
-	df = diff
-  dw = diff -w -b --ignore-space-at-eol --ignore-blank-lines 
 	ls = ls-files
-	p = pick --local-only
 	lg = log -p
 	l = log --oneline --no-merges
 	lgfiles = log --name-only --no-merges
@@ -39,7 +39,37 @@
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all --no-merges
 	lf = log --no-merges --oneline --
 	log-file = log --no-merges --
-	alog = log --date-order --all --graph --format=\"%C(green)%H%Creset %C(yellow)%an%Creset %C(blue bold)%ad%Creset %C(red bold)%d%Creset%s\"
+	p = pick --local-only
+	# diff without whitespace
+	dw = diff -w -b --ignore-space-at-eol --ignore-blank-lines
+
+	# Taken from https://github.com/jessfraz/dotfiles/blob/5ce693578b49f4d0561b3291ef2f4f4d767b90a6/.gitconfig
+	# Show the diff between the latest commit and the current state
+	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+	# `git di $number` shows the diff between the state `$number` revisions ago and the current state
+	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
+	# Remove branches that have already been merged with master
+	# a.k.a. ‘delete merged’
+	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d; git remote -v update -p"
+	# Find branches containing commit
+	fb = "!f() { git branch -a --contains $1; }; f"
+	# Find tags containing commit
+	ft = "!f() { git describe --always --contains $1; }; f"
+	# Find commits by source code
+	fc = "!f() { git log --pretty=format:'%C(yellow)%h	%Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+	# Find commits by commit message
+	fm = "!f() { git log --pretty=format:'%C(yellow)%h	%Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+
+	# Taken from seth vargo https://gist.github.com/sethvargo/6b2f7b592853381690bfe3bd00947e8f
+	undo = !git reset HEAD~1 --mixed
+
+	# Taken from trevor bramble https://twitter.com/TrevorBramble/status/774292970681937920
+	alias=!git config -l | grep ^alias | cut -c 7- | sort
+
+[apply]
+	# Detect whitespace errors when applying a patch
+	whitespace = fix
+
 [rerere]
 	enabled = 1
 # [url "git@github.com:"]
