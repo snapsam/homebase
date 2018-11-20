@@ -64,6 +64,17 @@ set -g -x CLICOLOR_FORCE 1
 #alias ls="ls -GFp"
 alias less="less -iR"
 
+function find_in_jar
+  if count $argv > /dev/null
+    for zip_file in (find . -name '*.jar')
+      echo $zip_file":"
+      unzip -l $zip_file | grep -i --color=always -R $argv[1]
+    end | less -R
+  else
+    echo "need a target"
+  end
+end
+
 #Prompt stuff
 #I'll refactor this later into it's own file
 
