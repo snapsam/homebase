@@ -234,3 +234,7 @@ else
         start_agent
     end
 end
+
+function peek
+    tmux split-window -h -p 33 vim "$argv"; or exit;
+end
