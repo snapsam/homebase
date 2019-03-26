@@ -64,6 +64,10 @@ set -g -x CLICOLOR_FORCE 1
 #alias ls="ls -GFp"
 alias less="less -iR"
 
+alias map="xargs -n1"
+
+alias cuts="cut -d' ' "
+
 function find_in_jar
   if count $argv > /dev/null
     for zip_file in (find . -name '*.jar')
