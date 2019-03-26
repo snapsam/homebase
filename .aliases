@@ -55,3 +55,4 @@ alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date
 # [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
 alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
 
+alias certdate='f(){ openssl s_client -connect "$@" -showcerts </dev/null 2>/dev/null | openssl x509 -inform PEM -text -out certdata | grep  "Not After"; }; f'
