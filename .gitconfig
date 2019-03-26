@@ -42,6 +42,8 @@
 	p = pick --local-only
 	# diff without whitespace
 	dw = diff -w -b --ignore-space-at-eol --ignore-blank-lines
+	# Take the changes that would be generated via git merge and apply them as a patch without committing
+	pc = "!f() { git diff HEAD..$1 | git apply -; }; f"
 
 	# Taken from https://github.com/jessfraz/dotfiles/blob/5ce693578b49f4d0561b3291ef2f4f4d767b90a6/.gitconfig
 	# Show the diff between the latest commit and the current state
