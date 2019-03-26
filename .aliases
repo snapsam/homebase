@@ -52,6 +52,10 @@ alias map="xargs -n1"
 # untar
 alias untar='tar xvf'
 
+# Peek in tmux
+# https://github.com/lf94/peek-for-tmux/blob/550a2a2e8a69d57cfa07c534e59340e4545f732e/README.md
+alias peek='tmux split-window -p 33 "$EDITOR"'
+
 # Stopwatch
 alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
 
