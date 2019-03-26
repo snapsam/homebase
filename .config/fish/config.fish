@@ -70,6 +70,10 @@ alias cuts="cut -d' ' "
 
 alias gradledep="grep ':' | grep -vi 'project' | grep -v 'Task :' | grep -v 'tesType' | grep -v 'See https' | grep -v 'actionable task:'  | sed -r 's/[\\| +-]+//' | sed -r 's/\(\*\)//' | sed -r 's/:[][a-zA-Z0-9\+\., \)-]+ -> /:/' | sed -r 's/[ ]+\$//' | sort | uniq"
 
+function listening_port
+  lsof -nP -i4TCP:$argv | grep LISTEN
+end
+
 function find_in_jar
   if count $argv > /dev/null
     for zip_file in (find . -name '*.jar')
