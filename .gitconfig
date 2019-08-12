@@ -15,6 +15,8 @@
 	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
 	pager = less -XRMSIF
 	editor = vim
+# https://chromium.googlesource.com/chromium/src.git/+/refs/heads/master/docs/mac_build_instructions.md#Improving-performance-of
+	untrackedCache = true
 # More info: http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/
 	trustctime = false
 [color]
@@ -70,7 +72,14 @@
 
 	# My Submodule last-resort fix
 	# TODO: I still haven't found an elegant solution to submodules missing in .gitmodule
-	submodulefix="!git submodule update --init --recursive --force || (git submodule sync && git submodule foreach --recursive 'git submodule sync && git submodule update --init --force') || (git submodule deinit --all -f && git submodule update --init --recursive --force)"
+	submodulefix = !git submodule update --init --recursive --force || (git submodule sync && git submodule foreach --recursive 'git submodule sync && git submodule update --init --force') || (git submodule deinit --all -f && git submodule update --init --recursive --force)
+
+	# Commits differing between branches
+	# TODO: doesn't work if branches point to the same commit
+	commitdiff="!f() { git log --left-right --graph --cherry-pick --oneline $1; }; f"
+
+	# From https://stackoverflow.com/a/4185907
+	showtag = !sh -c 'git rev-parse $1 | xargs git cat-file -p' -
 
 [apply]
 	# Detect whitespace errors when applying a patch
@@ -78,9 +87,11 @@
 
 [rerere]
 	enabled = 1
-# [url "git@github.com:"]
-# 	insteadOf = https://github.com/
+
 [url "git@github.sc-corp.net:"]
 	insteadOf = https://github.sc-corp.net/
-#[url "https://github.sc-corp.net/"]
-#	insteadOf = git@github.sc-corp.net:
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
