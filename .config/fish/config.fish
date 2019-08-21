@@ -46,7 +46,7 @@ set ANDROID_HVPROTO ddm
 set PATH $HOME/.cargo/bin $PATH
 
 # Go
-set -g -x GOPATH $HOME/Snapchat/Dev
+set -g -x GOPATH $HOME/workspace
 set PATH /usr/local/opt/go/libexec/bin $PATH $GOPATH/bin
 
 # Env variable

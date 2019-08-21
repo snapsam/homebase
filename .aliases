@@ -28,7 +28,7 @@ export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40
 alias grep='grep --color=auto '
 
 # Clean gradle dependencies
-# You'll want to use this with something like: ./gradlew snapchat-webapp:dependencies:compile --console=plain | gradledep
+# You'll want to use this with something like: ./gradlew module:dependencies:compile --console=plain | gradledep
 alias gradledep="grep ':' | grep -vi 'project' | grep -v 'Task :' | grep -v 'tesType' | grep -v 'See https' | grep -v 'actionable task:'  | sed -r 's/[\\| +-]+//' | sed -r 's/\(\*\)//' | sed -r 's/:[][a-zA-Z0-9\+\., \)-]+ -> /:/' | sed -r 's/[ ]+$//' | sort | uniq"
 
 # View HTTP traffic
