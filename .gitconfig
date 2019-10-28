@@ -93,6 +93,8 @@
 
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[url "git@bitbucket.org:"]
+	insteadOf = https://gremsam@bitbucket.org/
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
