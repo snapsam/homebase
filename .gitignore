@@ -1,3 +1,2 @@
-# Only track files that start in .
+# Opt-In for tracking
 *
-.snapaccess.yml
