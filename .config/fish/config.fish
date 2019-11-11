@@ -19,18 +19,18 @@
 set SHELL /usr/local/bin/fish
 
 # Path to Oh My Fish install.
-set -gx OMF_PATH "/Users/samrossoff/.local/share/omf"
+set -gx OMF_PATH "$HOME/.local/share/omf"
 
 # Customize Oh My Fish configuration path.
-#set -gx OMF_CONFIG "/Users/samrossoff/.config/omf"
+#set -gx OMF_CONFIG "$HOME/.config/omf"
 
 # Load oh-my-fish configuration.
 source $OMF_PATH/init.fish
 
 set -g fish_key_bindings fish_vi_key_bindings
 
-set PATH /Users/samrossoff/bin $PATH /opt/pkgconfig/bin /Users/samrossoff/google-cloud-sdk/bin /Users/samrossoff/play-1.2.5.3
-set APPENGINE_HOME /Users/samrossoff/appengine-java-sdk-1.9.34
+set PATH $HOME/bin $PATH /opt/pkgconfig/bin $HOME/google-cloud-sdk/bin $HOME/play-1.2.5.3
+set APPENGINE_HOME $HOME/appengine-java-sdk-1.9.34
 
 # BUCK
 #set PATH /usr/local/opt/buck/bin $PATH
