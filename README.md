@@ -18,4 +18,4 @@ Requires brew or some other means of installing fish:
 Example
 ========
 
-![Example of it in action](https://github.sc-corp.net/sam/homebase/blob/master/example.png?raw=true)
+![Example of it in action](https://github.com/gremsam/homebase/blob/master/example.png?raw=true)
