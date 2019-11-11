@@ -11,7 +11,7 @@ then
 fi
 
 # Source all files in .zshrc.d
-foreach i (`ls -1 ~/.zshrc.d/*.zsh`) {
+foreach i (`ls -1 ~/.zshrc.d/*.zsh | gsed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"`) {
   source $i
 }
 
