@@ -10,7 +10,7 @@ Requires brew or some other means of installing fish:
 ```
 % brew install fish
 % cd ~
-% git clone git@github.sc-corp.net:sam/homebase.git
+% git clone git@github.com:gremsam/homebase.git
 % mv ~/homebase/* ~
 % mv ~/homebase/.git ~
 ```
