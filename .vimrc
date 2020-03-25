@@ -49,6 +49,9 @@ Plugin 'bkad/CamelCaseMotion'
 Plugin 'tpope/vim-git'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'SirVer/ultisnips'
+" OMG FINALLY!!!!
+Plugin 'vim-scripts/ReplaceWithRegister'
+Plugin 'tommcdo/vim-exchange'
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
 
