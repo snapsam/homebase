@@ -73,3 +73,13 @@ alias rg='rg --hidden'
 
 # https://twitter.com/natfriedman/status/1137094384170799104
 alias agame='c=12322123;x=20;y=20;while read -sn1 p;do k=${c:$(((p-1)*2)):2};let x+=$(($k/10-2));let y+=$(($k%10-2));echo -en \\033[$y\;"$x"HX;done'
+
+
+# pwdx
+alias pwdx='f(){ lsof -p "$@" | grep cwd; }; f'
+
+# EC2 key fingerprint
+alias aws_fingerprint='f(){ ssh-keygen -ef "$@" -m PEM  | openssl rsa -RSAPublicKey_in -outform DER | openssl md5 -c; }; f'
+
+# urlencod a string via perl
+alias url_encode="perl -MURI::Escape -e 'print uri_escape(\$ARGV[0]);'"
