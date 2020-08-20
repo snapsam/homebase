@@ -86,3 +86,11 @@ alias url_encode="perl -MURI::Escape -e 'print uri_escape(\$ARGV[0]);'"
 
 # ISO 8601 date
 alias iso_date='date -u +"%Y-%m-%dT%H:%M:%SZ"'
+
+# Run a pod in your cluster with sh
+alias kubectl_ssh="kubectl run -it --rm --restart=Never alpine --image=alpine sh"
+
+
+# Find and edit
+alias rgedit='f(){ vim -p $(rg -l "$@"); unset -f f; }; f'
+
