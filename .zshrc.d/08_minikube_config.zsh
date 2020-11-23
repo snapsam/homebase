@@ -10,3 +10,10 @@
 #  eval $(minikube docker-env)
 #fi
 
+CURRENT_CONTEXT=$(kubectl config current-context)
+
+[ "${CURRENT_CONTEXT}" = "minikube" ] || kubectl config use-context minikube
+
+kubectl apply -f ~/workspace/useful-pods/minikube-host.yaml
+
+[ "${CURRENT_CONTEXT}" = "minikube" ] || kubectl config use-context "${CURRENT_CONTEXT}"
