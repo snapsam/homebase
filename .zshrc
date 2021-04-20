@@ -18,3 +18,4 @@ foreach i (`ls -1 ~/.zshrc.d/*.zsh | gsed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)
 # I'm leaving this here for now, but it really should be somehwere else
 if [ -f "$HOME/.env-improvement/shellhook.sh" ]; then . "$HOME/.env-improvement/shellhook.sh"; fi # [[EI SHELL SETUP]]
 
+export PATH=~/bin:$PATH
