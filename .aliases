@@ -94,3 +94,5 @@ alias kubectl_ssh="kubectl run -it --rm --restart=Never alpine --image=alpine sh
 # Find and edit
 alias rgedit='f(){ vim -p $(rg -l "$@"); unset -f f; }; f'
 
+# Replace docker-compose with docker cli
+alias docker-compose="docker compose"
