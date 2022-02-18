@@ -106,6 +106,8 @@ set wildmode=longest:full      " Matches only to longest filename, displays to m
 set complete=.,w,b,u           " complete from current file, and current buffers default: .,w,b,u,t,i  trying to keep down completion time
 set directory=$HOME/.vim/tmp   " set directory for tmp files to be in .vim, so that .swp files are not littered
 set clipboard=unnamed          " Use the * register when a register is not specified - unifies with system clipboard!
+set modeline                   " Let individual files overrise config via modeline
+set modelines=2                " Check the first/last 2 lines
 
 "set foldmethod=indent   " use indent unless overridden
 set foldlevel=0         " show contents of all folds

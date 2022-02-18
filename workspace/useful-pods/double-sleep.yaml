@@ -42,8 +42,3 @@ spec:
     key: node.kubernetes.io/unreachable
     operator: Exists
     tolerationSeconds: 300
-  volumes:
-  - name: default-token-llc5r
-    secret:
-      defaultMode: 420
-      secretName: default-token-llc5r

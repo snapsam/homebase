@@ -4,15 +4,6 @@ metadata:
   name: dnsutils
   namespace: default
 spec:
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchFields:
-          - key: metadata.name
-            operator: In
-            values:
-            - ip-10-0-1-66.ec2.internal
   containers:
   - name: dnsutils
     image: gcr.io/kubernetes-e2e-test-images/dnsutils:1.3
