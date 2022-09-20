@@ -116,7 +116,7 @@ set foldlevel=0         " show contents of all folds
 
 filetype plugin on          "turns on filetype plugin, lets matchit work well
 
-colorscheme zellner         "changes color scheme to something that looks decent on the mac
+colorscheme oldzeller         "changes color scheme to something that looks decent on the mac
 
 " Set the vim info options
 " In order: local marks for N files are saved, global marks are saved,
