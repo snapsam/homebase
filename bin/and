@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+if [ ! $? -eq 0 ]; then
+  exit $?
+fi
+
+exec ${@:1}
+exit $?

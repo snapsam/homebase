@@ -49,6 +49,9 @@ Plugin 'bkad/CamelCaseMotion'
 Plugin 'tpope/vim-git'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'SirVer/ultisnips'
+" OMG FINALLY!!!!
+Plugin 'vim-scripts/ReplaceWithRegister'
+Plugin 'tommcdo/vim-exchange'
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
 
@@ -103,6 +106,8 @@ set wildmode=longest:full      " Matches only to longest filename, displays to m
 set complete=.,w,b,u           " complete from current file, and current buffers default: .,w,b,u,t,i  trying to keep down completion time
 set directory=$HOME/.vim/tmp   " set directory for tmp files to be in .vim, so that .swp files are not littered
 set clipboard=unnamed          " Use the * register when a register is not specified - unifies with system clipboard!
+set modeline                   " Let individual files overrise config via modeline
+set modelines=2                " Check the first/last 2 lines
 
 "set foldmethod=indent   " use indent unless overridden
 set foldlevel=0         " show contents of all folds
@@ -111,7 +116,7 @@ set foldlevel=0         " show contents of all folds
 
 filetype plugin on          "turns on filetype plugin, lets matchit work well
 
-colorscheme zellner         "changes color scheme to something that looks decent on the mac
+colorscheme oldzeller         "changes color scheme to something that looks decent on the mac
 
 " Set the vim info options
 " In order: local marks for N files are saved, global marks are saved,
