@@ -5,13 +5,15 @@ metadata:
   name: escape-pod
   namespace: default
 spec:
+  hostPID: true
+  hostNetwork: true
   containers:
   - args:
     - sleep
     - "1000000"
-    image: busybox
+    image: ubuntu
     imagePullPolicy: Always
-    name: busybox
+    name: escape
     resources: {}
     terminationMessagePath: /dev/termination-log
     terminationMessagePolicy: File
