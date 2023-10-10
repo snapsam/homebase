@@ -34,6 +34,7 @@ Plugin 'YankRing.vim'
 Plugin 'ack.vim'
 Plugin 'ctrlp.vim'
 Plugin 'syntastic'
+Plugin 'kawaz/shellcheck.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vimtodo'
 Plugin 'openurl.vim'
@@ -426,3 +427,5 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+
+syntax match nonascii "[^\x00-\x7F]"
