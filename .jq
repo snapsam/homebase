@@ -1,3 +1,4 @@
+# Source: https://stackoverflow.com/questions/28593471/how-to-simplify-aws-dynamodb-query-json-output-from-the-command-line
 def decode_ddb:
     def _sprop($key): select(keys == [$key])[$key];                 # single property objects only
        ((objects | { value: _sprop("S") })                          # string (from string)
